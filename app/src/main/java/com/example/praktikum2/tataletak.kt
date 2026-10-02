@@ -2,6 +2,7 @@ package com.example.praktikum2
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,6 +18,7 @@ fun TataletakColumn(modifier:Modifier){
     }
 }
 
+@Composable
 @composable
 fun TataletakRow(modifier: Modifier) {
     Row(
@@ -29,6 +31,14 @@ fun TataletakRow(modifier: Modifier) {
     }
 }
 
+fun Box(
+    modifier: Any,
+    contentAlignment: Alignment,
+    content: BoxScope.() -> Unit
+) {
+}
+
+@Composable
 @composable
 fun TataletakBox(modifier: Modifier=Modifier){
     Box(
