@@ -19,6 +19,7 @@ fun TataletakColumn(modifier:Modifier){
 }
 
 @Composable
+
 @composable
 fun TataletakRow(modifier: Modifier) {
     Row(
@@ -32,61 +33,78 @@ fun TataletakRow(modifier: Modifier) {
 }
 
 fun Box(
-    modifier: Any,
+    modifier: modifier,
     contentAlignment: Alignment,
     content: BoxScope.() -> Unit
 ) {
 }
 
-@Composable
 @composable
 fun TataletakBox(modifier: Modifier=Modifier){
     Box(
        modifier=modifier.
-       .fillMaxWidth()
-       .fillMaxHeight(),
+            fillMaxWidth()
+            fillMaxHeight(),
        contentAlignment=Alignment.Center
     ){
         Text(text="Box 1")
     }
 }
 
-@composable
-fun TataletakBoxColumnRow(modifier:Modifier=Modifier){
-    column(
-        modifier=modifier
-            .padding(16.dp)
-            .fillMaxWidth()
-    ){
-        //bagian Row 1 di dalam column
-        Row(
-            modifier=Modifier.fillMaxWidth(),
-            horizontalArrangement=Arrangement.SpaceEvenly
-        ){
-            Text(text="komponen 1.1")
-            Text(text="komponen 1.2")
-            Text(text="komponen 1.3")
-        }
-
-        Spacer(modifier=Modifier.height(16.dp))
-
-        //bagian Box dengan Latar Belakang dan Gambar/texts
-        Box(
-            modifier= Modifier {
-                .fillMaxWidth()
-                .height(200.dp)
-                .background(color.LightGray),
-               contentAlignment=Alignment.Center
-        ){
-            column(
-                horizontalAlignment=Alignment.CenterHorizontally
-            )}
-            Text(
-                text="pembuatan applikasi digital absen",
-                fontSize=18.sp,
-                fontWeight=FontWeight.Bold,
-                fontFamily=FontFamily.SansSerif,
-            )
-
+private fun Companion.align(alignment: Alignment) {}
 
 @Composable
+fun TataletakBoxColumnRow(modifier: Modifier = Modifier) {
+    val gambar = painterResource(id = R.drawable.notasinaton)
+
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Text(text = "Col1 Row1 Komponen1")
+                Text(text = "Col1 Row1 Komponen2")
+                Text(text = "Col1 Row1 Komponen3")
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Text(text = "Col1 Row2 Komponen1")
+                Text(text = "Col1 Row2 Komponen2")
+                Text(text = "Col1 Row2 Komponen3")
+            }
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(300.dp)
+                .background(color = Color.Cyan),
+        contentAlignment = Alignment.Center
+        ) {
+        Image(
+            painter = gambar,
+            contentDescription = null,
+            contentScale = ContentScale.Fit
+        )
+        Text(
+            text = "My App",
+            fontSize = 50.sp,
+            color = Color.Red,
+            fontWeight = FontWeight.Bold,
+            fontFamily = FontFamily.Cursive,
+            modifier = Modifier.align(Alignment.Center)
+        }
+    }
+}
